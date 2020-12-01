@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userrating
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: discover
+  template:
+    metadata:
+      labels:
+        app: discover
+    spec:
+      containers:
+        - name: userrating
+          image: userrating:0.0.1
+          ports:
+            - containerPort: 8081
+          env:
+            - name: MONGO_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: rating-db-config
+                  key: database
+            - name: MONGO_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: rating-db-config
+                  key: host

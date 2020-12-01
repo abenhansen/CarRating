@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: car-catalog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: discover
+  template:
+    metadata:
+      labels:
+        app: discover
+    spec:
+      containers:
+        - name: car-catalog
+          image: car-catalog:0.0.1
+          ports:
+            - containerPort: 8090

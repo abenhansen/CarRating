@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: discover
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: discover
+  template:
+    metadata:
+      labels:
+        app: discover
+    spec:
+      containers:
+        - name: discover
+          image: discover:0.0.1
+          ports:
+            - containerPort: 8761

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rating-db-config
+data:
+  host: ratingdb-service
+  database:
